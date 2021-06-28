@@ -6,7 +6,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MyShop',
+      debugShowCheckedModeBanner: false,
+      title: 'Sample Shop',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
