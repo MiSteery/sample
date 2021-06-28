@@ -28,6 +28,14 @@ class _HomeState extends State<Home> {
         elevation: 0.1,
         backgroundColor: Colors.blueGrey,
         title: Text('sample shop'),
+        actions: <Widget>[
+          new IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+              onPressed: () {})
+        ],
       ),
       drawer: new Drawer(),
     );
