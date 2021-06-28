@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: new AppBar(
         elevation: 0.1,
-        backgroundColor: Colors.red.shade900,
+        backgroundColor: Colors.blueGrey,
         title: Text('sample shop'),
       ),
       drawer: new Drawer(),
