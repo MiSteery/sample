@@ -25,6 +25,15 @@ class _HomeState extends State<Home> {
       drawer: new Drawer(
         child: new ListView(
           children: <Widget>[
+            AppBar(
+              backgroundColor: Colors.blueGrey,
+              title: Text(
+                'Hey',
+                style: TextStyle(color: Colors.white),
+              ),
+              automaticallyImplyLeading: false,
+            ),
+            Divider(),
             InkWell(
               onTap: () {},
               child: ListTile(
