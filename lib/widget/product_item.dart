@@ -20,6 +20,9 @@ class ProductItem extends StatelessWidget {
         imageUrl,
         fit: BoxFit.cover,
       ),
+      footer: GridTileBar(
+        title: Text(title, textAlign: TextAlign.center),
+      ),
     );
   }
 }
