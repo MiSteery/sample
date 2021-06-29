@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:sample/screens/home.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    theme: ThemeData(
-      primaryColor: Colors.red.shade900
-    ),
-    home: Home(),
-  ));
+import 'package:sample/providers/products.dart';
+import 'package:sample/screens/product.dart';
+import 'package:sample/screens/product_detail.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (ctx) => Products(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme:
+            ThemeData(primaryColor: Colors.blueGrey, accentColor: Colors.cyan),
+        home: ProductView(),
+        routes: {
+          ProductDetail.routeName: (ctx) => ProductDetail(),
+        },
+      ),
+    );
+  }
 }
