@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:sample/providers/cart.dart';
 import 'package:sample/screens/cart.dart';
 import 'package:sample/widget/badge.dart';
-
 import 'package:sample/widget/product_grid.dart';
 
 class ProductView extends StatefulWidget {
