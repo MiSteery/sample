@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sample/providers/product.dart';
+import 'package:sample/providers/cart.dart';
 
 import 'package:sample/screens/product_detail.dart';
 
 class ProductItem extends StatelessWidget {
-  final String id;
-  final String title;
-  final double price;
-  final String imageUrl;
+  // final String id;
+  // final String title;
+  // final double price;
+  // final String imageUrl;
 
-  ProductItem(
-    this.id,
-    this.title,
-    this.price,
-    this.imageUrl,
-  );
+  // ProductItem(
+  //   this.id,
+  //   this.title,
+  //   this.price,
+  //   this.imageUrl,
+  // );
 
   @override
   Widget build(BuildContext context) {
+
+    final product =Provider.of<Product>(context, listen: false);
+    final cart = Provider.of<Cart>(context, listen: false);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
@@ -24,21 +30,23 @@ class ProductItem extends StatelessWidget {
           onTap: () {
             Navigator.of(context).pushNamed(
               ProductDetail.routeName,
-              arguments: id,
+              arguments: product.id,
             );
           },
           child: Image.network(
-            imageUrl,
+           product.imageUrl,
             fit: BoxFit.cover,
           ),
         ),
         footer: GridTileBar(
           backgroundColor: Colors.black38,
-          title: Text(title, textAlign: TextAlign.center),
-          subtitle: Text('\$$price'),
+          title: Text(product.title, textAlign: TextAlign.center),
+          subtitle: Text('\$$product.price'),
           trailing: IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              cart.addItem(product.id, product.price, product.title);
+            },
             color: Theme.of(context).accentColor,
           ),
         ),
