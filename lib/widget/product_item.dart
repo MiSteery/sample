@@ -22,6 +22,7 @@ class ProductItem extends StatelessWidget {
       ),
       footer: GridTileBar(
         title: Text(title, textAlign: TextAlign.center),
+        subtitle: Text('\$$price'),
       ),
     );
   }
