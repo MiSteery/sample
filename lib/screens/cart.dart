@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:sample/providers/cart.dart' show Cart;
 import 'package:sample/providers/order_detail.dart';
+import 'package:sample/screens/checkout.dart';
 import 'package:sample/widget/cart_item.dart';
 
 class CartScreen extends StatelessWidget {
@@ -14,6 +15,7 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Cart'),
+        
       ),
       body: Column(
         children: <Widget>[
@@ -73,6 +75,7 @@ class CartScreen extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: Checkout(),
     );
   }
 }
