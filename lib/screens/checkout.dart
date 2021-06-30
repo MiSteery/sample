@@ -1,10 +1,50 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sample/providers/cart.dart';
 
-class Checkout extends StatelessWidget {
+class Checkout extends StatefulWidget {
+  @override
+  _CheckoutState createState() => _CheckoutState();
+}
+
+class _CheckoutState extends State<Checkout> {
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
+    Future<void> _showMyDialog() async {
+      return showDialog<void>(
+          context: context,
+          barrierDismissible: false, // user must tap button!
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Message'),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: const <Widget>[
+                    Text('Are you sure ?'),
+                    Text('Would you like to approve of your order?'),
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Yes'),
+                  onPressed: () {
+                    cart.clear();
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
+    }
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       height: 60,
@@ -25,30 +65,9 @@ class Checkout extends StatelessWidget {
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton(
+            MaterialButton(
               onPressed: () {
-                return AlertDialog(
-                    title: Text('checkout'),
-                    content: Text('Thankyou'),
-                    actions: [
-                      FlatButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text(
-                          'ok',
-                        ),
-                      ),
-                      FlatButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text(
-                          'cancel',
-                        ),
-                      ),
-                    ],
-                    );
+                _showMyDialog();
               },
               child: Text('Checkout', style: TextStyle(color: Colors.white)),
               color: Colors.blueGrey,
