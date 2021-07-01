@@ -74,16 +74,20 @@ class _CheckoutState extends State<Checkout> {
         ],
       ),
       child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            MaterialButton(
-              onPressed: () {
-                _showMyDialog();
-              },
-              child: Text('Checkout', style: TextStyle(color: Colors.white)),
-              color: Colors.blueGrey,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          MaterialButton(
+            onPressed: () {
+              _showMyDialog();
+            },
+            child: Text(
+              'Checkout',
+              style: TextStyle(color: Colors.white),
             ),
-          ]),
+            color: Colors.blueGrey,
+          ),
+        ],
+      ),
     );
   }
 }

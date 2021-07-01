@@ -7,6 +7,7 @@ import 'package:sample/widget/badge.dart';
 import 'package:sample/widget/product_grid.dart';
 
 class ProductView extends StatefulWidget {
+  static const routeName = '/product';
   @override
   _ProductViewState createState() => _ProductViewState();
 }
