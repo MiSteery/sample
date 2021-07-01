@@ -35,6 +35,7 @@ class _OrderItemState extends State<OrderItem> {
                 });
               },
             ),
+            
           ),
           if (_expanded)
             Container(

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:sample/providers/cart.dart';
 import 'package:sample/providers/product.dart';
-import 'package:sample/screens/product_detail.dart' ;
+import 'package:sample/screens/product_detail.dart';
 
 class ProductItem extends StatelessWidget {
   @override
@@ -27,7 +27,10 @@ class ProductItem extends StatelessWidget {
         ),
         footer: GridTileBar(
           backgroundColor: Colors.black38,
-          title: Text(product.title, textAlign: TextAlign.center ,),
+          title: Text(
+            product.title,
+            textAlign: TextAlign.center,
+          ),
           subtitle: Text('\$${product.price}'),
           trailing: IconButton(
             icon: Icon(Icons.shopping_cart),
