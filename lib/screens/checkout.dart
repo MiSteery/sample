@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:sample/providers/cart.dart';
 import 'package:sample/providers/order_detail.dart';
+import 'package:sample/screens/invoice.dart';
 
 class Checkout extends StatefulWidget {
   @override
@@ -39,7 +40,7 @@ class _CheckoutState extends State<Checkout> {
                       cart.totalAmount,
                     );
                     cart.clear();
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pushNamed(Invoice.routeName);
                   }
                 },
               ),

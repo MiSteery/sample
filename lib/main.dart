@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
         ProductDetail.routeName: (ctx) => ProductDetail(),
         CartScreen.routeName:(ctx) => CartScreen(),
         Invoice.routeName:(ctx) => Invoice(),
+        ProductView.routeName:(ctx) => ProductView(),
       },
     ),
     );
