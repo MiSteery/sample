@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:sample/providers/cart.dart';
+import 'package:sample/providers/order_detail.dart';
 
 class Checkout extends StatefulWidget {
   @override
@@ -10,44 +12,53 @@ class Checkout extends StatefulWidget {
 class _CheckoutState extends State<Checkout> {
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
     final cart = Provider.of<Cart>(context);
     Future<void> _showMyDialog() async {
       return showDialog<void>(
-          context: context,
-          barrierDismissible: false, // user must tap button!
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Message'),
-              content: SingleChildScrollView(
-                child: ListBody(
-                  children: const <Widget>[
-                    Text('Are you sure ?'),
-                    Text('Would you like to approve of your order?'),
-                  ],
-                ),
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Message'),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: const <Widget>[
+                  Text('Are you sure ?'),
+                  Text('Would you like to approve of your order?'),
+                ],
               ),
-              actions: <Widget>[
-                TextButton(
-                  child: const Text('Yes'),
-                  onPressed: () {
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('Yes'),
+                onPressed: () {
+                  {
+                    Provider.of<OrderDetail>(context, listen: false).addOrder(
+                      cart.items.values.toList(),
+                      cart.totalAmount,
+                    );
                     cart.clear();
                     Navigator.of(context).pop();
-                  },
-                ),
-                TextButton(
-                  child: const Text('Cancel'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            );
-          });
+                  }
+                },
+              ),
+              TextButton(
+                child: const Text('Cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
     }
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-      height: 60,
+       height: size.height * 0.1,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
