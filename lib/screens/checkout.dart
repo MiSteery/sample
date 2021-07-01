@@ -26,7 +26,6 @@ class _CheckoutState extends State<Checkout> {
               child: ListBody(
                 children: const <Widget>[
                   Text('Are you sure ?'),
-                  Text('Would you like to approve of your order?'),
                 ],
               ),
             ),
@@ -58,7 +57,7 @@ class _CheckoutState extends State<Checkout> {
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-       height: size.height * 0.1,
+      height: size.height * 0.1,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
