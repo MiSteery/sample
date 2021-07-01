@@ -7,7 +7,6 @@ class Product with ChangeNotifier{
   final double price;
   final String imageUrl;
 
-
   Product({
     @required this.id,
     @required this.title,

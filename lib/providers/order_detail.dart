@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:sample/providers/cart.dart';
 
+import 'package:sample/providers/cart.dart';
 
 class OrderItem {
   final String id;
@@ -15,6 +15,7 @@ class OrderItem {
     @required this.dateTime,
   });
 }
+
 class OrderDetail with ChangeNotifier {
   List<OrderItem> _orders = [];
 
