@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:sample/providers/cart.dart';
+import 'package:sample/providers/order_detail.dart';
 import 'package:sample/providers/product.dart';
 import 'package:sample/screens/invoice.dart';
 import 'package:sample/screens/product_detail.dart';
@@ -32,7 +33,12 @@ class ProductItem extends StatelessWidget {
             icon: Icon(Icons.shopping_bag),
             onPressed: () {
               cart.addItem(product.id, product.price, product.title);
-               Navigator.of(context).pushNamed(Invoice.routeName);
+              Provider.of<OrderDetail>(context, listen: false).addOrder(
+                cart.items.values.toList(),
+                cart.totalAmount,
+              );
+              cart.clear();
+              Navigator.of(context).pushNamed(Invoice.routeName);
             },
             color: Colors.yellow,
           ),
