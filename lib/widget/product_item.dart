@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:sample/providers/cart.dart';
 import 'package:sample/providers/product.dart';
+import 'package:sample/screens/invoice.dart';
 import 'package:sample/screens/product_detail.dart';
 
 class ProductItem extends StatelessWidget {
@@ -27,6 +28,14 @@ class ProductItem extends StatelessWidget {
         ),
         footer: GridTileBar(
           backgroundColor: Colors.black38,
+          leading: IconButton(
+            icon: Icon(Icons.shopping_bag),
+            onPressed: () {
+              cart.addItem(product.id, product.price, product.title);
+               Navigator.of(context).pushNamed(Invoice.routeName);
+            },
+            color: Colors.yellow,
+          ),
           title: Text(
             product.title,
             textAlign: TextAlign.center,
